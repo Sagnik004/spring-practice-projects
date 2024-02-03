@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Student Registration Form</title>
+    <link rel="stylesheet" th:href="@{/css/student.css}" />
+</head>
+
+<body>
+
+    <h1>Student Registration Form</h1>
+
+    <form th:action="@{/registerStudent}" th:object="${student}" method="POST">
+        <div>
+            <label>First Name: </label>
+            <input type="text" th:field="*{firstName}" />
+        </div>
+        <br />
+
+        <div>
+            <label>Last Name: </label>
+            <input type="text" th:field="*{lastName}" />
+        </div>
+        <br />
+
+        <div>
+            <label>Country: </label>
+            <select th:field="*{country}">
+                <option
+                        th:each="tempCountry : ${countries}"
+                        th:value="${tempCountry}"
+                        th:text="${tempCountry}"
+                />
+            </select>
+        </div>
+        <br />
+
+        <!-- Hardcoded approach (not preferable)
+        <div>
+            <label>Country: </label>
+            <select th:field="*{country}">
+                <option th:value="Brazil">Brazil</option>
+                <option th:value="France">France</option>
+                <option th:value="Germany">Germany</option>
+                <option th:value="India">India</option>
+            </select>
+        </div>
+        <br />
+        -->
+
+        <div>
+            Favorite programming language:
+            <input
+                type="radio"
+                th:field="*{favoriteLanguage}"
+                th:each="tempLang : ${programmingLanguages}"
+                th:value="${tempLang}"
+                th:text="${tempLang}"
+            />
+        </div>
+        <br />
+
+        <!-- Hardcoded approach (not preferable)
+        <div>
+            <p>Favorite programming language: </p>
+            <input type="radio" th:field="*{favoriteLanguage}" th:value="Go" id="fav-language-go" />
+            <label for="fav-language-go">Go</label>
+            <input type="radio" th:field="*{favoriteLanguage}" th:value="Java" id="fav-language-java" />
+            <label for="fav-language-java">Java</label>
+            <input type="radio" th:field="*{favoriteLanguage}" th:value="Python" id="fav-language-python" />
+            <label for="fav-language-python">Python</label>
+        </div>
+        <br />
+        -->
+
+        <div>
+            Favorite Operating Systems:
+            <input type="checkbox" th:field="*{favoriteSystems}"
+                   th:each="os : ${operatingSystems}" th:value="${os}" th:text="${os}" />
+        </div>
+        <br />
+
+        <!-- Hardcoded approach (not preferable)
+        <div>
+            Favorite Operating Systems:
+            <input type="checkbox" th:field="*{favoriteSystems}" th:value="Linux" th:text="Linux" />
+            <input type="checkbox" th:field="*{favoriteSystems}" th:value="MacOS" th:text="MacOS" />
+            <input type="checkbox" th:field="*{favoriteSystems}"
+                   th:value="'Microsoft Windows'" th:text="'Microsoft Windows'" />
+        </div>
+        <br />
+        -->
+
+        <button type="submit">Register</button>
+    </form>
+
+</body>
+
+</html>

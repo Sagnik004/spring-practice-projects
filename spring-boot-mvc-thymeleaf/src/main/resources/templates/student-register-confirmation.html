@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Student Registration Confirmation</title>
+    <link rel="stylesheet" th:href="@{/css/student.css}" />
+</head>
+
+<body>
+
+    <h1>Student registration was successful!</h1>
+
+    <h3>Student details below</h3>
+    <p>Name: <span th:text="${student.firstName} + ' ' + ${student.lastName}" /></p>
+    <p>Country: <span th:text="${student.country}" /></p>
+    <p>Favorite programming language: <span th:text="${student.favoriteLanguage}" /></p>
+    <p>Favorite Operating Systems:</p>
+    <ul>
+        <li th:each="os : ${student.favoriteSystems}" th:text="${os}" />
+    </ul>
+
+</body>
+
+</html>

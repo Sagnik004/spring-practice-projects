@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+                xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Home</title>
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
+            rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+        }
+        button {
+            font: inherit;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>SCHA Company Home Page</h1>
+    <hr />
+    <p>Welcome to SCHA company home page</p>
+
+    <hr />
+    <!-- Display username and role -->
+    <p>
+        User: <span sec:authentication="principal.username"></span>
+        <br /><br />
+        Role(s): <span sec:authentication="principal.authorities"></span>
+    </p>
+
+    <!-- Add a link to point to /leaders. This is for manager role only! -->
+    <div sec:authorize="hasRole('MANAGER')">
+        <p>
+            <a th:href="@{/leaders}">Leadership Meeting</a>
+            (Only for Manager peeps)
+        </p>
+    </div>
+
+    <!-- Add a link to point to /systems. This is for admin role only! -->
+    <div sec:authorize="hasRole('ADMIN')">
+        <p>
+            <a th:href="@{/systems}">IT Systems Meeting</a>
+            (Only for Admin peeps)
+        </p>
+    </div>
+
+    <hr />
+    <!-- Add logout button -->
+    <form action="#" th:action="@{/logout}" method="POST">
+        <button type="submit">Logout</button>
+    </form>
+
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>SCHA Admins page</title>
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
+            rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+        }
+        button {
+            font: inherit;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>SCHA Admins home page</h1>
+    <hr />
+
+    <p>
+        We have annual holiday Caribbean cruise coming up. Register now!
+        <br />
+        Keep this trip a secret!!
+    </p>
+    <hr />
+
+    <a th:href="@{/}">Back to Home Page</a>
+
+</body>
+
+</html>
